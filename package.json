@@ -2,12 +2,13 @@
   "name": "airbnb",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server/app.js",
     "client": "npm run dev --prefix client",
-    "dev":"npm install && cd client && npm install && npm run build"
+    "dev":"nodemon server/app.js",
+    "start":"node server/app.js"
   },
   "author": "",
   "license": "ISC",
