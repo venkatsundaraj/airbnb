@@ -2,6 +2,7 @@
   "name": "client",
   "private": true,
   "proxy": "http://localhost:8000",
+  "homepage": "https://awesome-app.vercel.app",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
