@@ -29,7 +29,7 @@ if(process.env.NODE_ENV==='production'){
 }
 
 
-app.use(userRouter)
+app.use("admin",userRouter)
 app.use(hotelRouter)
 
 
