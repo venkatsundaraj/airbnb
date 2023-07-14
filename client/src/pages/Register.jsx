@@ -2,16 +2,41 @@ import React, {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { authActions } from '../store/authSlice'
 import { register } from '../store/authSlice'
+import {useNavigate} from 'react-router-dom'
 
 
 function Register() {
-  const auth = useSelector(state=>state.auth)
-  const disPatch = useDispatch()
-
+ 
   const [nameValue, setNameValue] = useState('')
   const [emailValue, setEmailValue] = useState('')
   const [passwordValue, setPasswordValue] = useState('')
   const [confirmpasswordValue, setConfirmPasswordValue] = useState('')
+
+ const location = useNavigate()
+
+  const auth = useSelector(state=>state.auth)
+  const disPatch = useDispatch()
+  const {isLoading,isSuccess,message, isError} = auth
+
+
+
+   useEffect(()=>{
+   
+    
+     if(message || isError){
+      
+      console.log(message)
+    }
+    if(isSuccess){
+      
+      location('/login')
+    }
+
+    disPatch(authActions.reset())
+
+  },[isSuccess,message])
+
+
 
   const formSubmitHandler = function(e){
     e.preventDefault()
@@ -19,15 +44,25 @@ function Register() {
    alert('enter valid inputs')
    return 
    }
+
+   if(passwordValue !== confirmpasswordValue) {
+    return alert('password should match')
+   }
+
    const formData = {
     userName:nameValue,
     email:emailValue,
     password:passwordValue,
     confirmPassword:confirmpasswordValue
    }
+
    disPatch(register(formData))
 
   }
+
+  
+
+  if(isLoading) return <h1 className='text-blue-100'>Loading...</h1>
   
   return (
     <section className='w-screen min-h-screen overflow-hidden bg-emerald-200 flex items-center justify-center'>

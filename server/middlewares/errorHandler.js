@@ -5,7 +5,7 @@ const errorHandler = function(err,req,res,next){
 
     console.log(err.message)
 
-    res.status(500).json({
+    res.status(400).json({
         message:err.message,
         stack:process.env.NODE_ENV==='development' ? err.stack : null
     })

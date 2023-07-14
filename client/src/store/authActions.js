@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = "http://localhost:5000"
+const API_URL = "http://localhost:8000"
 
 const registerAction = async function(userData){
     
@@ -11,8 +11,24 @@ const registerAction = async function(userData){
     
 }
 
+const loginAction = async function(user){
+    const response = await axios.post(`${API_URL}/login`,user)
+
+    if(response.data){
+        localStorage.setItem('user', JSON.stringify(response.data))
+    }
+
+    return response.data
+}
+
+const logoutAction = async function(){
+    return localStorage.removeItem('user')
+}
+
 const authServicesActions = {
-    registerAction:registerAction
+    registerAction:registerAction,
+    loginAction:loginAction,
+    logoutAction:logoutAction
 }
 
 export default authServicesActions
