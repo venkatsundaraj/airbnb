@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = "http://localhost:8000/admin"
+const API_URL = "https://airbnb-black-gamma.vercel.app/admin"
 
 const registerAction = async function(userData){
     
