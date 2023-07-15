@@ -27,9 +27,12 @@ if(process.env.NODE_ENV==='production'){
         res.json('please set to production')
     })
 }
+app.use('/admin/hello-world',(req,res,next)=>{
+    res.json('hello world')
+    next()
+})
 
-
-app.use("admin",userRouter)
+app.use("/admin",userRouter)
 app.use(hotelRouter)
 
 
