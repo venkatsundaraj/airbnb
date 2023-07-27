@@ -16,23 +16,25 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 app.use(cors())
 
+
+
+
+app.use("/api",userRouter)
+app.use("/api",hotelRouter)
+
 if(process.env.NODE_ENV==='production'){
     app.use(express.static(path.join(__dirname, "../client/dist")))
 
     app.use("*",(req, res,next)=>{
         res.sendFile(path.resolve(__dirname,"../client/dist/index.html"))
     })
+
+    
 }else{
     app.use('/',(req,res,next)=>{
         res.json('please set to production')
     })
 }
-
-
-app.use("/admin",userRouter)
-app.use(hotelRouter)
-
-
 
 app.use(errorHandler)
 

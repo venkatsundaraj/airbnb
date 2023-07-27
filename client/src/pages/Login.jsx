@@ -17,7 +17,7 @@ function Login() {
       console.log(message)
     }
 
-    if(isSuccess && user){
+    if(user){
       location('/')
     }
 
@@ -25,6 +25,7 @@ function Login() {
     
 
     dispatch(authActions.reset())
+
   },[message, user, isSuccess, isError])
 
   const formSubmitHandler = function(e){

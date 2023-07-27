@@ -2,14 +2,15 @@
   "name": "client",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://airbnb-omega-gray.vercel.app/",
+  "homepage": "http://127.0.0.1:8000/",
   "type": "module",
   "scripts": {
     "start":"vite",
     "dev": "vite --port 3000",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "serve":"npm run build && vite preview"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",

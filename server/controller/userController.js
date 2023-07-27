@@ -12,6 +12,7 @@ const generateJwt = function(id){
 
 exports.loginHandler = asyncHandler(async function(req,res,next){
     try{const {email, password} = req.body
+    console.log(req.user)
 
     if(!email || !password){
         throw new Error('Please enter valid email and password')
@@ -22,12 +23,10 @@ exports.loginHandler = asyncHandler(async function(req,res,next){
         throw new Error('Cannot identify the user')
     }
     const decryptedPassword = await bcrypt.compare(password, user.password)
+    // console.log(decryptedPassword)
 
-    if(!decryptedPassword){
-        return res.status(401).json({message:'please enter the correct password'})
-    }
-
-    const loggedInUser = {
+    if(decryptedPassword){
+        const loggedInUser = {
         id:user._id,
         userName:user.userName,
         password:user.password,
@@ -35,7 +34,15 @@ exports.loginHandler = asyncHandler(async function(req,res,next){
         token:generateJwt(user._id)
     }
 
-    return res.status(200).json(loggedInUser)
+    return res.status(200).json({user:loggedInUser, status:'ok'})
+    }else{
+
+        return res.status(401).json({message:'please enter the correct password'})
+    }
+
+
+
+    
 
 }catch(err){
     throw new Error(err)
@@ -45,6 +52,9 @@ exports.loginHandler = asyncHandler(async function(req,res,next){
 exports.registerHandler = asyncHandler(async function(req,res,next){
     try{
         const {userName, email, password, confirmPassword} = req.body
+        console.log(req.body)
+
+
         if(!userName || !email || !password ){
             throw new Error('all fields are needed')
         }
