@@ -67,7 +67,7 @@ function Register() {
   return (
     <section className='w-screen min-h-screen overflow-hidden bg-emerald-200 flex items-center justify-center'>
       <form onSubmit={formSubmitHandler} className='max-w-fit bg-slate-200 container mx-auto aspect-[1/0.65] rounded-3xl grid grid-cols-1 md:grid-cols-2 grid-flow-row items-center p-6'>
-        <label htmlFor="text"  className='font-semibold'>Name</label>
+        <label htmlFor="text"  className='font-semibold'>Name...</label>
         <input className='w-64 h-8 rounded-xl focus:outline-none' name='text' id='text' type='text' onChange={e=>setNameValue(e.target.value)}/>
         <label htmlFor="email" className='font-semibold'>Email</label>
         <input className='w-64 h-8 rounded-xl focus:outline-none' name='email' id='email' type='email' onChange={e=>setEmailValue(e.target.value)}/>
