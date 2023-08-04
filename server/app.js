@@ -13,25 +13,25 @@ const mongoDB = require('./config/db')
 mongoDB()
 
 app.use(express.json())
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 
 
 
 
-app.use("/api",userRouter)
-app.use("/api",hotelRouter)
+app.use("/api", userRouter)
+app.use("/api", hotelRouter)
 
-if(process.env.NODE_ENV==='production'){
+if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, "../client/dist")))
 
-    app.use("*",(req, res,next)=>{
-        res.sendFile(path.resolve(__dirname,"../client/dist/index.html"))
+    app.use("*", (req, res, next) => {
+        res.sendFile(path.resolve(__dirname, "../client/dist/index.html"))
+        // next()
     })
 
-    
-}else{
-    app.use('/',(req,res,next)=>{
+} else {
+    app.use('/', (req, res, next) => {
         res.json('please set to production')
     })
 }
@@ -39,5 +39,5 @@ if(process.env.NODE_ENV==='production'){
 app.use(errorHandler)
 
 
-app.listen(PORT, ()=>console.log(`server started at ${PORT}`))
+app.listen(PORT, () => console.log(`server started at ${PORT}`))
 
