@@ -46,7 +46,8 @@ function Login() {
   if (isLoading) return <h1>Loading...</h1>
   return (
     <section className='w-screen h-screen flex items-center justify-center'>
-      {/* <p>Login the form</p> */}
+      <p>Login the form to go home</p>
+      <h1>Hello</h1>
       <form onSubmit={formSubmitHandler} className='bg-orange-200 max-w-fit px-3 py-6 rounded-2xl grid grid-cols-2 gap-y-6 '>
         <label htmlFor="email">Email</label>
         <input onChange={(e) => setEmailValue(e.target.value)} className='focus:outline-none' name='email' type='email' id='email' />
