@@ -35,9 +35,7 @@ exports.loginHandler = asyncHandler(async function (req, res, next) {
         token: generateJwt(user._id),
       };
 
-      return res
-        .status(200)
-        .json({ user: loggedInUser, status: "ok", hello: "hello" });
+      return res.status(200).json({ user: loggedInUser, status: "ok" });
     } else {
       return res
         .status(401)
