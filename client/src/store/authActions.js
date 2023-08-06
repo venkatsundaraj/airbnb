@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8000";
-// const API_URL = "http://137.184.80.13/"
+// const API_URL = "http://localhost:8000";
+const API_URL = "http://137.184.80.13";
 
 const registerAction = async function (userData) {
   const response = await axios.post(`${API_URL}/api/register`, userData);
