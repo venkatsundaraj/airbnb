@@ -49,7 +49,7 @@ function Login() {
         onSubmit={formSubmitHandler}
         className="bg-orange-200 max-w-fit px-3 py-6 rounded-2xl grid grid-cols-2 gap-y-6 "
       >
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Email..</label>
         <input
           onChange={(e) => setEmailValue(e.target.value)}
           className="focus:outline-none"
